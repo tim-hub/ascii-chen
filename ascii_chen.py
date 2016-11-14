@@ -29,7 +29,15 @@ class Main(Handler):
 		# self.write("hello")
 		self.render_front()
 	def post(self):
-		pass
+		title=self.request.get('title')
+		art=self.request.get('art')
+
+		if title and art:
+			self.write("thanks")
+		else:
+			self.render_front(error="we need both title and art")
+
+
 app = webapp2.WSGIApplication([('/', Main)
 	],
                               debug=True)
