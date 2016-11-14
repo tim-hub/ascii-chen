@@ -23,11 +23,13 @@ class Handler(webapp2.RequestHandler):
         self.write( self.render_str(template, **kw))
 
 class Main(Handler):
+	def render_front(self, title="", art="", error=""):
+		self.render("front.html",title=title,art=art,error=error)
 	def get(self):
 		# self.write("hello")
-		self.render("front.html")
-
-
+		self.render_front()
+	def post(self):
+		pass
 app = webapp2.WSGIApplication([('/', Main)
 	],
                               debug=True)
